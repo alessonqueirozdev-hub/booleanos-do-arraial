@@ -305,7 +305,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--txt);min-h
   <div class="how-block"><p><span class="how-op" style="background:var(--and-bg);color:var(--and-c)">AND</span> — V <u>somente</u> quando <b>ambos</b> são V</p><p style="color:var(--txt3);font-size:.8rem;font-family:'JetBrains Mono',monospace">V AND V = V · V AND F = F · F AND F = F</p><p style="color:var(--txt2);font-size:.8rem">💡 "Só passo se estudar <b>E</b> fazer a prova"</p></div>
   <div class="how-block"><p><span class="how-op" style="background:var(--or-bg);color:var(--or-c)">OR</span> — V quando <b>pelo menos um</b> é V</p><p style="color:var(--txt3);font-size:.8rem;font-family:'JetBrains Mono',monospace">V OR V = V · V OR F = V · F OR F = F</p><p style="color:var(--txt2);font-size:.8rem">💡 "Posso ir de ônibus <b>OU</b> metrô"</p></div>
   <div class="how-block"><p><span class="how-op" style="background:var(--not-bg);color:var(--not-c)">NOT</span> — <b>Inverte</b> o valor</p><p style="color:var(--txt3);font-size:.8rem;font-family:'JetBrains Mono',monospace">NOT V = F · NOT F = V</p><p style="color:var(--txt2);font-size:.8rem">💡 "NÃO está chovendo" — o contrário!</p></div>
-  <div class="how-block"><p>🎮 <b>8 Tipos de Desafio:</b></p><p>📝 Avaliar · 🧩 Completar · 📊 Tabela Verdade · 💬 Situação Real</p><p>🔌 Porta Lógica · 🐛 Debug · 🔄 Equivalência · 🎯 Escolher Expressão</p></div>
+  <div class="how-block"><p>🎮 <b>Desafios para 6º e 7º ano:</b></p><p>📝 Avaliar · 🧩 Completar · 📊 Tabela Verdade · 💬 Situação Real</p><p>🔌 Porta Lógica · 🐛 Debug Lógico</p></div>
   <div class="how-block"><p>⚡ <b>Power-ups</b> — Ganhe a cada 5 acertos!</p><p>⏱️ <b>+Tempo</b> · ❤️ <b>+Vida</b> · 🔮 <b>50/50</b> · ⏭️ <b>Pular</b></p></div>
   <div class="how-block"><p>🔥 Combos multiplicam pontos · ⭐ Rodadas Boss a cada 5 níveis!</p><p>♾️ O jogo é <b>infinito</b> — quanto mais longe, mais pontos!</p></div>
   <button class="btn btn-play" onclick="showScr('scrStart')" style="margin-top:8px">← Voltar</button>
@@ -585,6 +585,14 @@ function normalizeFocusType(v=''){
   const key=String(v||'').trim().toLowerCase();
   return map[key]||'';
 }
+function cleanQuestionStem(stem=''){
+  let s=String(stem||'').trim();
+  s=s.replace(/^\s*[^a-z0-9]{2,}\[\d+\]\s*/i,'');
+  s=s.replace(/^\s*(EXPANSÃO|EXPANSAO)\s+[A-Z0-9-]+\s*/iu,'');
+  s=s.replace(/^\s*BANCO\s+EXPANDIDO\s*\[[^\]]+\]\s*/iu,'');
+  s=s.replace(/^\s*\[[A-Z0-9_-]+\]\s*/i,'');
+  return s.trim();
+}
 function toInt(v,dv){const n=parseInt(v,10);return Number.isFinite(n)?n:dv}
 function parseJsonArray(raw){
   if(Array.isArray(raw))return raw;
@@ -605,7 +613,8 @@ function normalizeQuestionTypeLabel(qType){
   return{label:'🔄 Equivalência',cls:'q-type-equiv'};
 }
 function normalizeQuestionRow(row){
-  const stem=pickFirstValue(row,['stem','prompt','question','enunciado']);
+  const rawStem=pickFirstValue(row,['stem','prompt','question','enunciado']);
+  const stem=cleanQuestionStem(rawStem);
   const expression=pickFirstValue(row,['expression','expr','formula']);
   const focusType=normalizeFocusType(pickFirstValue(row,['focus_type','q_type','type','categoria']));
   const options=parseJsonArray(row.options).map(v=>String(v).trim()).filter(Boolean);
@@ -616,17 +625,18 @@ function normalizeQuestionRow(row){
   const bubble=pickFirstValue(row,['bubble','feedback','coach']);
   if(!stem||options.length<2)return null;
   const ci=Math.max(1,Math.min(options.length,correct1))-1;
-  const t=normalizeQuestionTypeLabel(focusType||'equiv');
+  const t=normalizeQuestionTypeLabel(focusType||'eval');
+  const showExpr=expression&&!['table','scenario'].includes(focusType);
   return{
     id:pickFirstValue(row,['id'])||`${stem.slice(0,32)}_${Math.random().toString(36).slice(2,8)}`,
     diffMin,
     diffMax,
-    focusType:focusType||'equiv',
+    focusType:focusType||'eval',
     type:'bank',
     typeLabel:t.label,
     typeCls:t.cls,
     prompt:esc(stem),
-    body:expression?`<div class="expr-box">${esc(expression)}</div>`:'',
+    body:showExpr?`<div class="expr-box">${esc(expression)}</div>`:'',
     answers:options.map((txt,i)=>({text:txt,correct:i===ci,cls:'btn-a-opt'})),
     explain:{steps:explanation.length?explanation:[`Resposta correta: ${options[ci]}`],plain:expression||stem},
     tip:TYPE_TIPS[focusType]||'Converta cada proposição para V/F e aplique o conectivo lógico.',
@@ -664,9 +674,23 @@ function pickBankQuestion(cfg){
   if(!questionBankNormalized.length)return null;
   let pool=questionBankNormalized.filter(q=>G.level>=q.diffMin&&G.level<=q.diffMax);
   if(!pool.length)pool=questionBankNormalized;
+
+  const allowedTypes=G.level<=3
+    ? ['eval','complete','table','scenario']
+    : G.level<=6
+      ? ['eval','complete','table','scenario','gate']
+      : ['eval','complete','table','scenario','gate','debug'];
+  const byType=pool.filter(q=>allowedTypes.includes(q.focusType));
+  if(byType.length)pool=byType;
+
+  if(G.level<=9){
+    const gentle=pool.filter(q=>!/equivalên|equivalen|de morgan|absorção|distributiv|tautolog|contradi|bicond|implica|tripla negação/i.test(q.prompt||''));
+    if(gentle.length)pool=gentle;
+  }
+
   if(G.focusType){
     const focusPool=pool.filter(q=>q.focusType===G.focusType);
-    if(focusPool.length&&Math.random()<.66)pool=focusPool;
+    if(focusPool.length&&Math.random()<.5)pool=focusPool;
   }
   if(G.lastBankId){
     const noRepeat=pool.filter(q=>String(q.id)!==String(G.lastBankId));
@@ -761,21 +785,20 @@ function checkAch(){
 /* ========== DIFFICULTY ========== */
 function diff(lv){
   let cfg;
-  if(lv<=2)cfg={maxOps:1,not:false,parens:false,timer:18,types:['eval','scenario']};
-  else if(lv<=4)cfg={maxOps:1,not:true,parens:false,timer:16,types:['eval','scenario','complete']};
-  else if(lv<=6)cfg={maxOps:2,not:false,parens:false,timer:15,types:['eval','scenario','complete','table']};
-  else if(lv<=8)cfg={maxOps:2,not:true,parens:false,timer:14,types:['eval','complete','table','gate','debug']};
-  else if(lv<=11)cfg={maxOps:2,not:true,parens:true,timer:12,types:['eval','complete','table','pick','gate','debug','equiv']};
-  else if(lv<=14)cfg={maxOps:3,not:true,parens:true,timer:11,types:['eval','complete','table','pick','gate','debug','equiv','scenario']};
+  if(lv<=2)cfg={maxOps:1,not:false,parens:false,timer:22,types:['eval','scenario','complete']};
+  else if(lv<=4)cfg={maxOps:1,not:true,parens:false,timer:20,types:['eval','scenario','complete','table']};
+  else if(lv<=6)cfg={maxOps:2,not:true,parens:false,timer:18,types:['eval','scenario','complete','table','gate']};
+  else if(lv<=9)cfg={maxOps:2,not:true,parens:true,timer:16,types:['eval','scenario','complete','table','gate','debug']};
+  else if(lv<=12)cfg={maxOps:3,not:true,parens:true,timer:15,types:['eval','scenario','complete','table','gate','debug']};
   else{
-    const x=Math.floor((lv-14)/3);
-    cfg={maxOps:Math.min(3+x,5),not:true,parens:true,timer:Math.max(5,10-x),types:['eval','complete','table','pick','gate','debug','equiv','scenario']};
+    const x=Math.floor((lv-12)/4);
+    cfg={maxOps:Math.min(3+x,4),not:true,parens:true,timer:Math.max(12,14-x),types:['eval','scenario','complete','table','gate','debug']};
   }
 
   const recentAcc=getRecentAcc();
-  const adaptive=recentAcc>=.86?-1.1:recentAcc<=.45?1.4:0;
-  const cfgOut={...cfg,timer:Math.max(5,Math.min(22,cfg.timer+adaptive))};
-  if(recentAcc>=.92&&cfgOut.maxOps<5)cfgOut.maxOps++;
+  const adaptive=recentAcc>=.92?-0.4:recentAcc<=.45?1.6:0;
+  const cfgOut={...cfg,timer:Math.max(10,Math.min(24,cfg.timer+adaptive))};
+  if(recentAcc>=.96&&cfgOut.maxOps<4&&lv>=10)cfgOut.maxOps++;
   if(recentAcc<=.35&&cfgOut.maxOps>1)cfgOut.maxOps--;
   return cfgOut;
 }
@@ -924,7 +947,8 @@ function pickQuestionType(types){
 }
 function genQ(){
   const cfg=diff(G.level);G.timerMax=cfg.timer;
-  const bankChance=G.focusType ? 0.58 : (G.level<=4 ? 0.48 : 0.34);
+  const bankUnlocked=G.level>=3;
+  const bankChance=!bankUnlocked?0:(G.level<=6?0.08:(G.focusType?0.18:0.14));
   if(questionBankCache.length&&Math.random()<bankChance){
     const bq=pickBankQuestion(cfg);
     if(bq)return bq;
@@ -1000,7 +1024,7 @@ function startGame(){
   G.pu={time:1,life:0,fifty:1,skip:1};G.puEarned=0;G.achs=new Set();
   G.recent=[];G.focusType='';G.lastQType=null;G.lastBankId=null;G.typeStats=freshTypeStats();G.lvNo=0;
   showScr('scrGame');setChar('idle');setEyes('var(--accent)');setMouth(true);
-  say(`Olá ${n.split(' ')[0]}! Hoje vamos subir sua precisão em lógica booleana! 🤖`);
+  say(`Olá ${n.split(' ')[0]}! Vamos praticar lógica booleana no nível 6º/7º ano! 🤖`);
   $('expl').className='explain';$('bossBanner').classList.remove('show');
   renderPU();upHUD();setTimeout(()=>nextQ(),700);
 }
