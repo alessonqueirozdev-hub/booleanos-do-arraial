@@ -55,10 +55,30 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--txt);min-h
 .sel-info.show{display:block}
 .sel-info-name{font-family:'Baloo 2',cursive;font-size:1.05rem;color:var(--accent);font-weight:700}
 .sel-info-cls{font-size:.8rem;color:var(--txt2);font-weight:600}
+.sel-tools{display:flex;gap:8px;align-items:center}
+.sel-tools select{flex:1}
+.btn-mini{display:inline-flex;align-items:center;justify-content:center;padding:10px 12px;border:1.5px solid var(--border);border-radius:10px;background:var(--bg3);color:var(--txt2);font-family:'JetBrains Mono',monospace;font-size:.64rem;font-weight:700;letter-spacing:.8px;cursor:pointer;transition:all .2s}
+.btn-mini:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
+.btn-mini:disabled{opacity:.4;cursor:default}
+.sel-state{display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 0 14px;padding:8px 10px;border-radius:10px;font-size:.74rem;font-weight:700}
+.sel-state.loading{background:#6c5ce712;border:1px solid #6c5ce744;color:var(--primary-light)}
+.sel-state.ok{background:var(--success-bg);border:1px solid #00b89444;color:var(--success)}
+.sel-state.warn{background:var(--warn-bg);border:1px solid #fdcb6e44;color:var(--warn)}
+.sel-state.error{background:var(--danger-bg);border:1px solid #e1705544;color:var(--danger)}
+.sel-spin{width:13px;height:13px;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.student-profile{margin-top:12px;padding:12px;background:#13122a;border:1px solid var(--border);border-radius:10px;display:none}
+.student-profile.show{display:block}
+.sp-title{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--txt3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px}
+.sp-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.sp-it{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:8px 10px}
+.sp-l{font-size:.62rem;color:var(--txt3);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
+.sp-v{font-family:'Baloo 2',cursive;font-size:.96rem;font-weight:800;color:var(--txt)}
 
 /* ===== BUTTONS ===== */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:13px 26px;border:none;border-radius:10px;font-family:'Baloo 2',cursive;font-size:.9rem;font-weight:700;cursor:pointer;transition:all .2s;position:relative}
 .btn:active{transform:scale(.96)}
+.btn:disabled{opacity:.45;cursor:default;transform:none;box-shadow:none}
 .btn-play{background:linear-gradient(135deg,var(--primary),#5a4bd1);color:#fff;box-shadow:0 4px 18px #6c5ce744;width:100%;font-size:1rem}
 .btn-play:hover{box-shadow:0 6px 28px #6c5ce766;transform:translateY(-2px)}
 .btn-sec{background:transparent;border:1.5px solid var(--primary-light);color:var(--primary-light);font-size:.78rem;padding:10px 18px}
@@ -69,6 +89,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--txt);min-h
 .hud{display:flex;justify-content:space-between;align-items:center;width:100%;max-width:720px;padding:10px 16px;background:var(--card);border:1px solid var(--border);border-radius:12px;flex-wrap:wrap;gap:6px;margin-bottom:8px}
 .hi{text-align:center;min-width:48px} .hi-l{font-family:'JetBrains Mono',monospace;font-size:.52rem;color:var(--txt3);text-transform:uppercase;letter-spacing:1.5px} .hi-v{font-family:'Baloo 2',cursive;font-size:1.1rem;font-weight:800}
 .hi-score .hi-v{color:var(--accent)} .hi-level .hi-v{color:var(--primary-light)} .hi-combo .hi-v{color:var(--warn)} .hi-lives .hi-v{color:var(--danger)}
+.hi-acc .hi-v{color:var(--success)}
 
 /* ===== LEVEL PROGRESS ===== */
 .lv-bar{display:flex;align-items:center;gap:8px;width:100%;max-width:720px;margin-bottom:4px}
@@ -202,6 +223,13 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--txt);min-h
 .go-s{text-align:center} .go-sv{font-family:'Baloo 2',cursive;font-size:1.2rem;font-weight:800} .go-sl{font-size:.65rem;color:var(--txt3);text-transform:uppercase;letter-spacing:1px;margin-top:1px}
 .go-badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
 .go-badge{display:flex;align-items:center;gap:4px;padding:4px 10px;background:var(--warn-bg);border:1px solid #fdcb6e44;border-radius:16px;font-size:.72rem;font-weight:700;color:var(--warn)}
+.go-report{margin:0 auto 12px;max-width:520px;background:#13122a;border:1px solid var(--border);border-radius:10px;padding:12px}
+.go-report-title{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--txt3);text-transform:uppercase;letter-spacing:1.4px;margin-bottom:8px}
+.go-report-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:8px}
+.go-report-item{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:8px 9px}
+.go-report-l{font-size:.62rem;color:var(--txt3);text-transform:uppercase;letter-spacing:1px}
+.go-report-v{font-family:'Baloo 2',cursive;font-size:.95rem;font-weight:800;color:var(--txt)}
+.go-report-tip{font-size:.78rem;line-height:1.45;color:var(--txt2)}
 
 /* ===== HOW-TO ===== */
 .how-block{background:#13122a;padding:14px;border-radius:12px;border:1px solid var(--border);margin-bottom:10px;line-height:1.6;font-size:.88rem}
@@ -219,6 +247,10 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--txt);min-h
   .expr-box{font-size:.85rem;padding:8px 10px;gap:3px} .e-v,.e-op,.e-blank{height:26px;min-width:28px;font-size:.75rem;padding:0 5px}
   .tt th,.tt td{padding:5px 7px;font-size:.72rem} .hud{padding:8px 10px} .hi-v{font-size:.9rem}
   .powerups{gap:4px} .pu-btn{padding:4px 8px;font-size:.68rem}
+  .sel-tools{flex-direction:column;align-items:stretch}
+  .btn-mini{width:100%}
+  .sp-grid{grid-template-columns:1fr}
+  .go-report-grid{grid-template-columns:1fr}
 }
 ::-webkit-scrollbar{width:5px} ::-webkit-scrollbar-track{background:var(--bg)} ::-webkit-scrollbar-thumb{background:var(--bg3);border-radius:3px}
 </style>
@@ -236,19 +268,26 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--txt);min-h
 <div style="height:20px"></div>
 <div class="card">
   <div class="notice" id="offN">⚡ Modo offline — ranking salvo localmente</div>
-  <div class="fg"><label>Selecione seu nome</label>
-    <select id="inpS">
-      <option value="" disabled selected>Escolha seu nome...</option>
-      <optgroup label="📘 6º ANO A"><option value="Adryan Vitor|6º Ano A">Adryan Vitor</option><option value="Elias Samuel|6º Ano A">Elias Samuel</option><option value="Davi Sabino|6º Ano A">Davi Sabino</option><option value="Gabriel Fernando|6º Ano A">Gabriel Fernando</option><option value="Andrelayne Vitória|6º Ano A">Andrelayne Vitória</option></optgroup>
-      <optgroup label="📘 6º ANO B"><option value="Ana Gabryella|6º Ano B">Ana Gabryella</option><option value="Ana Luiza|6º Ano B">Ana Luiza</option><option value="Ariele Sophia|6º Ano B">Ariele Sophia</option><option value="Enzo Rafael|6º Ano B">Enzo Rafael</option><option value="João Mateus|6º Ano B">João Mateus</option></optgroup>
-      <optgroup label="📘 6º ANO C"><option value="Adriel|6º Ano C">Adriel</option><option value="João Mateus|6º Ano C">João Mateus</option><option value="Guilherme|6º Ano C">Guilherme</option><option value="Richard Allan|6º Ano C">Richard Allan</option><option value="Antony|6º Ano C">Antony</option></optgroup>
-      <optgroup label="📗 7º ANO A"><option value="João Lucas|7º Ano A">João Lucas</option><option value="Luiz Antônio|7º Ano A">Luiz Antônio</option><option value="Nicolas Miguel|7º Ano A">Nicolas Miguel</option><option value="Darlan|7º Ano A">Darlan</option><option value="Emerson|7º Ano A">Emerson</option></optgroup>
-      <optgroup label="📗 7º ANO B"><option value="Fernando Pereira|7º Ano B">Fernando Pereira</option><option value="Izaias|7º Ano B">Izaias</option><option value="Alerrandro|7º Ano B">Alerrandro</option><option value="Alex|7º Ano B">Alex</option><option value="Eliab|7º Ano B">Eliab</option></optgroup>
-      <optgroup label="📗 7º ANO C"><option value="Romero Pereira|7º Ano C">Romero Pereira</option><option value="Mathias Raphael|7º Ano C">Mathias Raphael</option><option value="Ryan Rafael|7º Ano C">Ryan Rafael</option><option value="Pedro Henrique|7º Ano C">Pedro Henrique</option><option value="Ruan Hiago|7º Ano C">Ruan Hiago</option></optgroup>
-    </select>
+  <div class="fg"><label>Selecione seu nome (carregado do Supabase)</label>
+    <div class="sel-tools">
+      <select id="inpS" disabled>
+        <option value="" disabled selected>Carregando alunos...</option>
+      </select>
+      <button class="btn-mini" id="reloadStudentsBtn" type="button">ATUALIZAR LISTA</button>
+    </div>
   </div>
+  <div class="sel-state loading" id="selState"><span class="sel-spin"></span><span id="selStateTxt">Buscando alunos no banco...</span></div>
   <div class="sel-info" id="selI"><div class="sel-info-name" id="selN"></div><div class="sel-info-cls" id="selC"></div></div>
-  <button class="btn btn-play" onclick="startGame()">▶&nbsp; JOGAR</button>
+  <div class="student-profile" id="studentProfile">
+    <div class="sp-title">Perfil do aluno</div>
+    <div class="sp-grid">
+      <div class="sp-it"><div class="sp-l">Melhor Pontuação</div><div class="sp-v" id="pfBestScore">-</div></div>
+      <div class="sp-it"><div class="sp-l">Melhor Nível</div><div class="sp-v" id="pfBestLevel">-</div></div>
+      <div class="sp-it"><div class="sp-l">Partidas</div><div class="sp-v" id="pfGames">-</div></div>
+      <div class="sp-it"><div class="sp-l">Precisão Média</div><div class="sp-v" id="pfAcc">-</div></div>
+    </div>
+  </div>
+  <button class="btn btn-play" id="startBtn" onclick="startGame()" disabled>▶&nbsp; JOGAR</button>
   <div class="btn-row">
     <button class="btn btn-sec" onclick="showScr('scrLB')">🏆 Ranking</button>
     <button class="btn btn-sec" onclick="showScr('scrHow')">📖 Como Jogar</button>
@@ -280,6 +319,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--txt);min-h
   <div class="hi hi-level"><div class="hi-l">Nível</div><div class="hi-v" id="hL">1</div></div>
   <div class="hi hi-combo"><div class="hi-l">Combo</div><div class="hi-v" id="hC">x1</div></div>
   <div class="hi hi-lives"><div class="hi-l">Vidas</div><div class="hi-v" id="hV">❤❤❤</div></div>
+  <div class="hi hi-acc"><div class="hi-l">Precisão</div><div class="hi-v" id="hA">0%</div></div>
 </div>
 <div class="lv-bar"><span class="lv-bar-label" id="lvLabel">Nv.1 — 0/5</span><div class="lv-bar-track"><div class="lv-bar-fill" id="lvFill" style="width:0%"></div></div></div>
 <div class="timer-bar"><div class="timer-fill" id="tFill"></div></div>
@@ -320,6 +360,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--txt);min-h
   <div class="go-s"><div class="go-sv" style="color:var(--warn)" id="goCm">0</div><div class="go-sl">Max Combo</div></div>
 </div>
 <div class="go-badges" id="goBadges"></div>
+<div class="go-report" id="goRep"></div>
 <div class="btn-row">
   <button class="btn btn-play" onclick="startGame()" style="width:auto;padding:12px 28px">▶ Jogar de Novo</button>
   <button class="btn btn-sec" onclick="showScr('scrLB')">🏆 Ranking</button>
@@ -332,7 +373,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--txt);min-h
 <div class="brand"><div class="brand-school">EMTI Arraial Novo do Bom Jesus</div><div class="brand-title" style="font-size:clamp(1.1rem,3.5vw,1.5rem)">🏆 Ranking</div></div>
 <div style="height:10px"></div>
 <div class="lb-w">
-  <div class="lb-tabs"><button class="lb-tab active" onclick="setLBTab('all',this)">Geral</button><button class="lb-tab" onclick="setLBTab('6A',this)">6º A</button><button class="lb-tab" onclick="setLBTab('6B',this)">6º B</button><button class="lb-tab" onclick="setLBTab('6C',this)">6º C</button><button class="lb-tab" onclick="setLBTab('7A',this)">7º A</button><button class="lb-tab" onclick="setLBTab('7B',this)">7º B</button><button class="lb-tab" onclick="setLBTab('7C',this)">7º C</button></div>
+  <div class="lb-tabs" id="lbTabs"><button class="lb-tab active" onclick="setLBTab('all',this)">Geral</button></div>
   <div id="lbList"></div>
 </div>
 <div class="btn-row" style="margin-top:14px">
@@ -345,15 +386,22 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--txt);min-h
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
 // ==============================================================
-//  SUPABASE — Cole sua URL e chave anon aqui!
-//  Crie uma tabela "scores" com: id(int8), name(text), class(text),
+//  SUPABASE
+//  Tabela "scores": id(int8), name(text), class(text),
 //  score(int4), level(int4), correct(int4), wrong(int4),
 //  max_combo(int4), created_at(timestamptz default now())
+//  Tabela de alunos sugerida: "students" (name(text), class(text), active(bool))
+//  Tabela de questões sugerida: "question_bank" (stem, options, correct_option, ...)
 // ==============================================================
 const SUPA_URL = 'https://ngmawbqnlpktpmiiohsk.supabase.co'; // 'https://xxxxx.supabase.co'
 const SUPA_KEY = 'sb_publishable_8c_z4ucMS81POiFJX3WuCQ__0naoM91'; // 'eyJhbGci...'
+const SCORES_TABLE = 'scores';
+const STUDENT_TABLE_CANDIDATES = ['students', 'alunos', 'student_list'];
+const QUESTION_TABLE_CANDIDATES = ['question_bank', 'questions_booleanos', 'perguntas_booleanas'];
 
 let supa = null;
+let activeStudentsTable = STUDENT_TABLE_CANDIDATES[0];
+let activeQuestionTable = QUESTION_TABLE_CANDIDATES[0];
 try {
   if (SUPA_URL && SUPA_KEY) {
     supa = supabase.createClient(SUPA_URL, SUPA_KEY);
@@ -368,16 +416,80 @@ try {
 
 async function saveCloud(d) {
   if (!supa) return;
-  try { await supa.from('scores').insert([{name:d.name,class:d.class,score:d.score,level:d.level,correct:d.correct,wrong:d.wrong,max_combo:d.maxCombo}]); } catch(e) { console.warn(e); }
+  try { await supa.from(SCORES_TABLE).insert([{name:d.name,class:d.class,score:d.score,level:d.level,correct:d.correct,wrong:d.wrong,max_combo:d.maxCombo}]); } catch(e) { console.warn(e); }
 }
 async function getCloud(filter) {
   if (!supa) return null;
   try {
-    let q = supa.from('scores').select('*').order('score',{ascending:false}).limit(30);
-    if (filter && filter !== 'all') q = q.ilike('class', '%'+filter+'%');
+    let q = supa.from(SCORES_TABLE).select('*').order('score',{ascending:false}).limit(40);
+    if (filter && filter !== 'all') q = q.eq('class', filter);
     const {data} = await q;
     return data;
   } catch(e) { return null; }
+}
+
+function pickFirstValue(row, keys) {
+  for (const key of keys) {
+    if (row && row[key] !== undefined && row[key] !== null) {
+      const txt = String(row[key]).trim();
+      if (txt) return txt;
+    }
+  }
+  return '';
+}
+function pickBoolValue(row, keys, fallback=true) {
+  for (const key of keys) {
+    if (row && row[key] !== undefined && row[key] !== null) {
+      const v = row[key];
+      if (typeof v === 'boolean') return v;
+      if (typeof v === 'number') return v !== 0;
+      if (typeof v === 'string') return !['0','false','f','nao','não','inactive','inativo'].includes(v.trim().toLowerCase());
+      return !!v;
+    }
+  }
+  return fallback;
+}
+function normalizeStudentRow(row) {
+  const name = pickFirstValue(row, ['name', 'student_name', 'nome', 'aluno', 'full_name']);
+  const cls = pickFirstValue(row, ['class', 'class_name', 'turma', 'serie', 'grade']);
+  const active = pickBoolValue(row, ['active', 'is_active', 'ativo', 'enabled'], true);
+  if (!name || !cls || !active) return null;
+  return {name, class: cls};
+}
+async function fetchStudentsCloudRaw() {
+  if (!supa) return {rows:null, error:new Error('Sem conexão com Supabase')};
+  let lastError = null;
+  for (const table of STUDENT_TABLE_CANDIDATES) {
+    try {
+      const {data, error} = await supa.from(table).select('*').limit(1000);
+      if (!error) {
+        activeStudentsTable = table;
+        return {rows:Array.isArray(data)?data:[], error:null};
+      }
+      lastError = error;
+    } catch (err) {
+      lastError = err;
+    }
+  }
+  return {rows:null, error:lastError || new Error('Tabela de alunos não encontrada')};
+}
+
+async function fetchQuestionBankCloudRaw() {
+  if (!supa) return {rows:null, error:new Error('Sem conexão com Supabase')};
+  let lastError = null;
+  for (const table of QUESTION_TABLE_CANDIDATES) {
+    try {
+      const {data, error} = await supa.from(table).select('*').eq('active', true).limit(1200);
+      if (!error) {
+        activeQuestionTable = table;
+        return {rows:Array.isArray(data)?data:[], error:null};
+      }
+      lastError = error;
+    } catch (err) {
+      lastError = err;
+    }
+  }
+  return {rows:null, error:lastError || new Error('Tabela de questões não encontrada')};
 }
 </script>
 
@@ -396,13 +508,174 @@ function sfxAch(){[523,784,1047].forEach((f,i)=>setTimeout(()=>tone(f,.15,'trian
 function sfxTk(){tone(880,.02,'sine',.025)}
 
 /* ========== STATE ========== */
+const QMETA={
+  eval:{label:'Avaliar'},
+  complete:{label:'Completar'},
+  table:{label:'Tabela'},
+  scenario:{label:'Situação'},
+  pick:{label:'Escolher'},
+  gate:{label:'Porta'},
+  debug:{label:'Debug'},
+  equiv:{label:'Equivalência'},
+};
+function freshTypeStats(){
+  return Object.keys(QMETA).reduce((acc,k)=>{acc[k]={ok:0,no:0};return acc},{});
+}
 const G={name:'',cls:'',score:0,level:1,lives:3,combo:0,maxCombo:0,ok:0,no:0,qInLv:0,qPerLv:5,timer:18,timerMax:18,timerInt:null,active:false,busy:false,current:null,isBoss:false,
-  pu:{time:1,life:0,fifty:1,skip:1},puEarned:0,
+  pu:{time:1,life:0,fifty:1,skip:1},puEarned:0,lastQType:null,lastBankId:null,recent:[],focusType:'',typeStats:freshTypeStats(),lvNo:0,
   achs:new Set(),totalGames:0};
 const $=id=>document.getElementById(id);
 const esc=s=>{const d=document.createElement('div');d.textContent=s;return d.innerHTML};
 const RB=()=>Math.random()<.5;const pick=a=>a[Math.floor(Math.random()*a.length)];
 function showScr(id){document.querySelectorAll('.scr').forEach(s=>s.classList.remove('on'));$(id).classList.add('on');if(id==='scrLB')loadLB()}
+
+const STUDENTS_CACHE_KEY='ba_students_cache_v2';
+const QUESTION_BANK_CACHE_KEY='ba_question_bank_cache_v1';
+let studentsCache=[];
+let questionBankCache=[];
+let questionBankNormalized=[];
+let lbFilter='all';
+let profileReqToken=0;
+
+function parseClassParts(cls=''){
+  const txt=String(cls).trim();
+  const n=(txt.match(/\d+/)||[])[0];
+  const l=(txt.match(/[A-Z]$/i)||[])[0];
+  return{txt,num:n?parseInt(n,10):999,letter:(l||'Z').toUpperCase()};
+}
+function sortClasses(a,b){
+  const pa=parseClassParts(a),pb=parseClassParts(b);
+  if(pa.num!==pb.num)return pa.num-pb.num;
+  if(pa.letter!==pb.letter)return pa.letter.localeCompare(pb.letter,'pt-BR');
+  return pa.txt.localeCompare(pb.txt,'pt-BR');
+}
+function shortClassLabel(cls=''){
+  const p=parseClassParts(cls);
+  if(p.num!==999&&p.letter!=='Z')return`${p.num}º ${p.letter}`;
+  return cls;
+}
+function getRecentAcc(){
+  if(!G.recent.length)return .5;
+  return G.recent.reduce((a,b)=>a+b,0)/G.recent.length;
+}
+function getTypeAcc(type){
+  const t=G.typeStats[type];
+  if(!t)return .5;
+  const total=t.ok+t.no;
+  if(!total)return .5;
+  return t.ok/total;
+}
+function registerAnswerStats(ok,type){
+  if(!G.typeStats[type])G.typeStats[type]={ok:0,no:0};
+  G.typeStats[type][ok?'ok':'no']++;
+  G.recent.push(ok?1:0);
+  if(G.recent.length>10)G.recent.shift();
+  if(!ok)G.focusType=type;
+  if(ok&&G.focusType===type&&getTypeAcc(type)>=.7)G.focusType='';
+}
+function weakestTypeIn(types){
+  const ranked=types.map(t=>{
+    const s=G.typeStats[t]||{ok:0,no:0};
+    return{t,acc:getTypeAcc(t),tries:s.ok+s.no};
+  }).sort((a,b)=>a.acc-b.acc||a.tries-b.tries);
+  return ranked[0]?.t||pick(types);
+}
+function normalizeFocusType(v=''){
+  const map={avaliar:'eval',eval:'eval',completar:'complete',complete:'complete',tabela:'table',table:'table',cenario:'scenario',scenario:'scenario',escolher:'pick',pick:'pick',porta:'gate',gate:'gate',debug:'debug',equivalencia:'equiv',equiv:'equiv'};
+  const key=String(v||'').trim().toLowerCase();
+  return map[key]||'';
+}
+function toInt(v,dv){const n=parseInt(v,10);return Number.isFinite(n)?n:dv}
+function parseJsonArray(raw){
+  if(Array.isArray(raw))return raw;
+  if(typeof raw==='string'){
+    try{const j=JSON.parse(raw);if(Array.isArray(j))return j}catch{}
+  }
+  return [];
+}
+function normalizeQuestionTypeLabel(qType){
+  const type=normalizeFocusType(qType);
+  if(type==='eval')return{label:'🧠 Valor-Verdade',cls:'q-type-eval'};
+  if(type==='complete')return{label:'🧩 Conectivo',cls:'q-type-complete'};
+  if(type==='table')return{label:'📊 Tabela-Verdade',cls:'q-type-table'};
+  if(type==='scenario')return{label:'💬 Modelagem Lógica',cls:'q-type-scenario'};
+  if(type==='pick')return{label:'🎯 Equivalência',cls:'q-type-pick'};
+  if(type==='gate')return{label:'🔌 Função Booleana',cls:'q-type-gate'};
+  if(type==='debug')return{label:'🐛 Auditoria Lógica',cls:'q-type-debug'};
+  return{label:'🔄 Equivalência',cls:'q-type-equiv'};
+}
+function normalizeQuestionRow(row){
+  const stem=pickFirstValue(row,['stem','prompt','question','enunciado']);
+  const expression=pickFirstValue(row,['expression','expr','formula']);
+  const focusType=normalizeFocusType(pickFirstValue(row,['focus_type','q_type','type','categoria']));
+  const options=parseJsonArray(row.options).map(v=>String(v).trim()).filter(Boolean);
+  const explanation=parseJsonArray(row.explanation).map(v=>String(v).trim()).filter(Boolean);
+  const correct1=toInt(pickFirstValue(row,['correct_option','answer_index','correct_index']),0);
+  const diffMin=toInt(pickFirstValue(row,['difficulty_min','min_level','nivel_min']),1);
+  const diffMax=toInt(pickFirstValue(row,['difficulty_max','max_level','nivel_max']),999);
+  const bubble=pickFirstValue(row,['bubble','feedback','coach']);
+  if(!stem||options.length<2)return null;
+  const ci=Math.max(1,Math.min(options.length,correct1))-1;
+  const t=normalizeQuestionTypeLabel(focusType||'equiv');
+  return{
+    id:pickFirstValue(row,['id'])||`${stem.slice(0,32)}_${Math.random().toString(36).slice(2,8)}`,
+    diffMin,
+    diffMax,
+    focusType:focusType||'equiv',
+    type:'bank',
+    typeLabel:t.label,
+    typeCls:t.cls,
+    prompt:esc(stem),
+    body:expression?`<div class="expr-box">${esc(expression)}</div>`:'',
+    answers:options.map((txt,i)=>({text:txt,correct:i===ci,cls:'btn-a-opt'})),
+    explain:{steps:explanation.length?explanation:[`Resposta correta: ${options[ci]}`],plain:expression||stem},
+    tip:TYPE_TIPS[focusType]||'Converta cada proposição para V/F e aplique o conectivo lógico.',
+    bubble:bubble||'Ótima leitura formal da proposição! ✅',
+  };
+}
+function saveQuestionBankCache(list){
+  try{localStorage.setItem(QUESTION_BANK_CACHE_KEY,JSON.stringify(list))}catch(e){console.warn('Falha ao salvar cache de questões',e)}
+}
+function readQuestionBankCache(){
+  try{
+    const raw=JSON.parse(localStorage.getItem(QUESTION_BANK_CACHE_KEY)||'[]');
+    if(!Array.isArray(raw))return[];
+    return raw;
+  }catch{return[]}
+}
+async function loadQuestionBank(){
+  let rows=[];
+  const cloud=await fetchQuestionBankCloudRaw();
+  if(Array.isArray(cloud.rows))rows=cloud.rows;
+  if(rows.length){
+    questionBankCache=rows;
+    questionBankNormalized=rows.map(normalizeQuestionRow).filter(Boolean);
+    saveQuestionBankCache(rows);
+    console.log(`Banco de questões carregado: ${questionBankNormalized.length} itens válidos (${activeQuestionTable}).`);
+    return;
+  }
+  const cached=readQuestionBankCache();
+  questionBankCache=Array.isArray(cached)?cached:[];
+  questionBankNormalized=questionBankCache.map(normalizeQuestionRow).filter(Boolean);
+  if(questionBankNormalized.length)console.warn(`Usando cache local de questões (${questionBankNormalized.length}).`);
+  if(cloud.error)console.warn('Falha ao carregar banco de questões:',cloud.error);
+}
+function pickBankQuestion(cfg){
+  if(!questionBankNormalized.length)return null;
+  let pool=questionBankNormalized.filter(q=>G.level>=q.diffMin&&G.level<=q.diffMax);
+  if(!pool.length)pool=questionBankNormalized;
+  if(G.focusType){
+    const focusPool=pool.filter(q=>q.focusType===G.focusType);
+    if(focusPool.length&&Math.random()<.66)pool=focusPool;
+  }
+  if(G.lastBankId){
+    const noRepeat=pool.filter(q=>String(q.id)!==String(G.lastBankId));
+    if(noRepeat.length)pool=noRepeat;
+  }
+  const q=pick(pool);
+  G.lastBankId=q.id;
+  return q;
+}
 
 /* ========== CHARACTER ========== */
 function setChar(s){$('charC').className='char-container '+s}
@@ -415,6 +688,8 @@ function upHUD(){
   $('hS').textContent=G.score;$('hL').textContent=G.level;
   $('hC').textContent='x'+Math.max(1,G.combo);
   $('hV').textContent='❤'.repeat(G.lives)+'🖤'.repeat(Math.max(0,3-G.lives));
+  const total=G.ok+G.no;
+  $('hA').textContent=total?`${Math.round((G.ok/total)*100)}%`:'0%';
   const pct=(G.qInLv/G.qPerLv)*100;
   $('lvFill').style.width=pct+'%';
   $('lvLabel').textContent=`Nv.${G.level} — ${G.qInLv}/${G.qPerLv}`;
@@ -478,19 +753,31 @@ function checkAch(){
   if(G.combo>=5)tryA('combo5');if(G.combo>=10)tryA('combo10');
   if(G.level>=5)tryA('lv5');if(G.level>=10)tryA('lv10');
   if(G.score>=500)tryA('pts500');if(G.score>=2000)tryA('pts2000');
+  if(G.isBoss&&G.combo>0)tryA('boss');
+  if(G.qInLv===G.qPerLv&&G.lvNo===0)tryA('perfect');
   if(G.lives<=1&&G.level>=3)tryA('survivor');
 }
 
 /* ========== DIFFICULTY ========== */
 function diff(lv){
-  if(lv<=2)return{maxOps:1,not:false,parens:false,timer:18,types:['eval','scenario']};
-  if(lv<=4)return{maxOps:1,not:true,parens:false,timer:16,types:['eval','scenario','complete']};
-  if(lv<=6)return{maxOps:2,not:false,parens:false,timer:15,types:['eval','scenario','complete','table']};
-  if(lv<=8)return{maxOps:2,not:true,parens:false,timer:14,types:['eval','complete','table','gate','debug']};
-  if(lv<=11)return{maxOps:2,not:true,parens:true,timer:12,types:['eval','complete','table','pick','gate','debug','equiv']};
-  if(lv<=14)return{maxOps:3,not:true,parens:true,timer:11,types:['eval','complete','table','pick','gate','debug','equiv','scenario']};
-  const x=Math.floor((lv-14)/3);
-  return{maxOps:Math.min(3+x,5),not:true,parens:true,timer:Math.max(5,10-x),types:['eval','complete','table','pick','gate','debug','equiv','scenario']};
+  let cfg;
+  if(lv<=2)cfg={maxOps:1,not:false,parens:false,timer:18,types:['eval','scenario']};
+  else if(lv<=4)cfg={maxOps:1,not:true,parens:false,timer:16,types:['eval','scenario','complete']};
+  else if(lv<=6)cfg={maxOps:2,not:false,parens:false,timer:15,types:['eval','scenario','complete','table']};
+  else if(lv<=8)cfg={maxOps:2,not:true,parens:false,timer:14,types:['eval','complete','table','gate','debug']};
+  else if(lv<=11)cfg={maxOps:2,not:true,parens:true,timer:12,types:['eval','complete','table','pick','gate','debug','equiv']};
+  else if(lv<=14)cfg={maxOps:3,not:true,parens:true,timer:11,types:['eval','complete','table','pick','gate','debug','equiv','scenario']};
+  else{
+    const x=Math.floor((lv-14)/3);
+    cfg={maxOps:Math.min(3+x,5),not:true,parens:true,timer:Math.max(5,10-x),types:['eval','complete','table','pick','gate','debug','equiv','scenario']};
+  }
+
+  const recentAcc=getRecentAcc();
+  const adaptive=recentAcc>=.86?-1.1:recentAcc<=.45?1.4:0;
+  const cfgOut={...cfg,timer:Math.max(5,Math.min(22,cfg.timer+adaptive))};
+  if(recentAcc>=.92&&cfgOut.maxOps<5)cfgOut.maxOps++;
+  if(recentAcc<=.35&&cfgOut.maxOps>1)cfgOut.maxOps--;
+  return cfgOut;
 }
 
 /* ========== EXPRESSION ENGINE ========== */
@@ -550,17 +837,17 @@ function gateNOT(a){const r=!a;return{svg:`<svg viewBox="0 0 220 80" width="220"
 </svg>`,result:r,explain:[`A=${a?'V':'F'}`,`NOT inverte o valor`,`NOT ${a?'V':'F'} = ${r?'V':'F'}`]}}
 
 /* ========== QUESTION GENERATORS ========== */
-function qEval(cfg){const e=genExpr(cfg);return{type:'eval',typeLabel:'📝 Avaliar',typeCls:'q-type-eval',prompt:'Qual é o resultado desta expressão?',body:`<div class="expr-box">${e.html} <span class="e-eq">=</span> <span class="e-blank">?</span></div>`,answers:[{text:'VERDADEIRO',correct:e.result===true,cls:'btn-a-true'},{text:'FALSO',correct:e.result===false,cls:'btn-a-false'}],explain:{steps:e.steps.length?e.steps:[`${e.plain} = ${e.result?'V':'F'}`],plain:e.plain},bubble:e.result?'Expressão VERDADEIRA! ✓':'Expressão FALSA! ✗'}}
+function qEval(cfg){const e=genExpr(cfg);return{type:'eval',typeLabel:'🧠 Valor-Verdade',typeCls:'q-type-eval',prompt:'Determine o valor-verdade da fórmula proposicional abaixo:',body:`<div class="expr-box">${e.html} <span class="e-eq">=</span> <span class="e-blank">?</span></div>`,answers:[{text:'VERDADEIRO (V)',correct:e.result===true,cls:'btn-a-true'},{text:'FALSO (F)',correct:e.result===false,cls:'btn-a-false'}],explain:{steps:[`Fórmula: ${e.plain}`,...(e.steps.length?e.steps:[`${e.plain} = ${e.result?'V':'F'}`]),'Ordem de avaliação: parênteses e NOT, depois AND/OR.'],plain:e.plain},bubble:e.result?'A fórmula é satisfatível neste caso: V ✓':'A avaliação desta interpretação resulta em F ✗'}}
 
 function qComplete(cfg){
   const a=RB(),b=RB(),ops=['and','or'],cop=pick(ops),res=cop==='and'?(a&&b):(a||b);
   const wop=cop==='and'?'or':'and',wres=wop==='and'?(a&&b):(a||b);
   if(res===wres)return qEval(cfg);
   const h=`<span class="e-v ${a?'e-true':'e-false'}">${a?'V':'F'}</span> <span class="e-blank">???</span> <span class="e-v ${b?'e-true':'e-false'}">${b?'V':'F'}</span> <span class="e-eq">=</span> <span class="e-v ${res?'e-true':'e-false'}">${res?'V':'F'}</span>`;
-  const opts=ops.map(op=>({text:op.toUpperCase(),correct:op===cop,cls:'btn-a-opt'}));
-  if(cfg.not)opts.push({text:'NOT',correct:false,cls:'btn-a-opt'});
+  const opts=ops.map(op=>({text:op==='and'?'AND (conjunção)':'OR (disjunção)',correct:op===cop,cls:'btn-a-opt'}));
+  if(cfg.not)opts.push({text:'NOT (negação)',correct:false,cls:'btn-a-opt'});
   opts.sort(()=>Math.random()-.5);
-  return{type:'complete',typeLabel:'🧩 Completar',typeCls:'q-type-complete',prompt:'Qual operador completa a expressão?',body:`<div class="expr-box">${h}</div>`,answers:opts,explain:{steps:[`${a?'V':'F'} ${cop.toUpperCase()} ${b?'V':'F'} = ${res?'V':'F'}`,cop==='and'?'AND: ambos V para ser V':'OR: basta um V'],plain:`${a?'V':'F'} ${cop.toUpperCase()} ${b?'V':'F'}`},bubble:`Operador: ${cop.toUpperCase()}! 🧩`}
+  return{type:'complete',typeLabel:'🧩 Conectivo',typeCls:'q-type-complete',prompt:'Qual conectivo booleano torna a proposição correta?',body:`<div class="expr-box">${h}</div>`,answers:opts,explain:{steps:[`Objetivo: obter ${res?'V':'F'} com A=${a?'V':'F'} e B=${b?'V':'F'}`,`${a?'V':'F'} ${cop.toUpperCase()} ${b?'V':'F'} = ${res?'V':'F'}`,cop==='and'?'Conjunção (AND): exige A=V e B=V.':'Disjunção (OR): basta pelo menos uma proposição verdadeira.'],plain:`${a?'V':'F'} ${cop.toUpperCase()} ${b?'V':'F'}`},bubble:`Conectivo identificado: ${cop.toUpperCase()} ✅`}
 }
 
 function qTable(cfg){
@@ -569,12 +856,12 @@ function qTable(cfg){
   let th=`<table class="tt"><tr><th>A</th><th>B</th><th>A ${op.toUpperCase()} B</th></tr>`;
   rows.forEach((r,i)=>{const res=op==='and'?(r[0]&&r[1]):(r[0]||r[1]);const hl=i===bi?' class="hl"':'';const rc=i===bi?'<td class="blank-cell">???</td>':`<td class="${res?'tv':'fv'}">${res?'V':'F'}</td>`;th+=`<tr${hl}><td class="${r[0]?'tv':'fv'}">${r[0]?'V':'F'}</td><td class="${r[1]?'tv':'fv'}">${r[1]?'V':'F'}</td>${rc}</tr>`});
   th+='</table>';
-  return{type:'table',typeLabel:'📊 Tabela Verdade',typeCls:'q-type-table',prompt:`Preencha a célula destacada (${op.toUpperCase()}):`,body:th,answers:[{text:'VERDADEIRO',correct:cv===true,cls:'btn-a-true'},{text:'FALSO',correct:cv===false,cls:'btn-a-false'}],explain:{steps:[`A=${br[0]?'V':'F'}, B=${br[1]?'V':'F'}`,`${br[0]?'V':'F'} ${op.toUpperCase()} ${br[1]?'V':'F'} = ${cv?'V':'F'}`,op==='and'?'AND: ambos V → V':'OR: pelo menos um V → V'],plain:`Tabela ${op.toUpperCase()}`},bubble:`Valor: ${cv?'VERDADEIRO':'FALSO'}! 📊`}
+  return{type:'table',typeLabel:'📊 Tabela-Verdade',typeCls:'q-type-table',prompt:`Analise a tabela-verdade parcial e determine o valor da linha destacada (${op.toUpperCase()}):`,body:th,answers:[{text:'VERDADEIRO (V)',correct:cv===true,cls:'btn-a-true'},{text:'FALSO (F)',correct:cv===false,cls:'btn-a-false'}],explain:{steps:[`Linha destacada: A=${br[0]?'V':'F'}, B=${br[1]?'V':'F'}`,`${br[0]?'V':'F'} ${op.toUpperCase()} ${br[1]?'V':'F'} = ${cv?'V':'F'}`,op==='and'?'Regra da conjunção: somente V quando ambos são V.':'Regra da disjunção: V quando ao menos uma proposição é V.'],plain:`Tabela ${op.toUpperCase()}`},bubble:`Valor deduzido via tabela-verdade: ${cv?'V':'F'} 📊`}
 }
 
 function qScenario(cfg){
   const sc=pick(SCENARIOS),a=RB(),b=RB(),op=pick(sc.ops),r=op==='and'?(a&&b):(a||b);
-  return{type:'scenario',typeLabel:'💬 Situação Real',typeCls:'q-type-scenario',prompt:'Qual é o resultado lógico?',body:`<div class="scenario-box"><span class="scenario-emoji">${sc.emoji}</span><div class="scenario-text">${sc.tpl(a,b,op)}</div></div>`,answers:[{text:'✓ SIM',correct:r===true,cls:'btn-a-true'},{text:'✗ NÃO',correct:r===false,cls:'btn-a-false'}],explain:{steps:[`Cond. 1: ${a?'V':'F'}`,`Cond. 2: ${b?'V':'F'}`,`${a?'V':'F'} ${op.toUpperCase()} ${b?'V':'F'} = ${r?'V':'F'}`,op==='and'?'AND: ambas verdadeiras':'OR: basta uma verdadeira'],plain:`${a?'V':'F'} ${op.toUpperCase()} ${b?'V':'F'}`},bubble:r?'SIM! Verdadeiro! ✓':'NÃO! Falso! ✗'}
+  return{type:'scenario',typeLabel:'💬 Modelagem Lógica',typeCls:'q-type-scenario',prompt:'Modele o cenário em lógica booleana e avalie o valor-verdade da proposição composta:',body:`<div class="scenario-box"><span class="scenario-emoji">${sc.emoji}</span><div class="scenario-text">${sc.tpl(a,b,op)}<hr style="border:none;border-top:1px solid var(--border);margin:10px 0"><span style="font-size:.75rem;color:var(--txt3);font-family:'JetBrains Mono',monospace">Formalização: A e B são proposições booleanas; expressão final = A ${op.toUpperCase()} B.</span></div></div>`,answers:[{text:'✓ PROPOSIÇÃO VERDADEIRA',correct:r===true,cls:'btn-a-true'},{text:'✗ PROPOSIÇÃO FALSA',correct:r===false,cls:'btn-a-false'}],explain:{steps:[`Mapeamento: A=${a?'V':'F'} e B=${b?'V':'F'}`,`Fórmula modelada: A ${op.toUpperCase()} B`,`Avaliação: ${a?'V':'F'} ${op.toUpperCase()} ${b?'V':'F'} = ${r?'V':'F'}`,op==='and'?'Conjunção: A∧B só é V quando ambas as proposições são V.':'Disjunção: A∨B é V se ao menos uma proposição for V.'],plain:`${a?'V':'F'} ${op.toUpperCase()} ${b?'V':'F'}`},bubble:r?'Modelagem correta: proposição composta verdadeira ✅':'Modelagem correta: proposição composta falsa ✅'}
 }
 
 function qPick(cfg){
@@ -582,14 +869,14 @@ function qPick(cfg){
   for(let i=0;i<3;i++){const e=genExpr({maxOps:1,not:cfg.not,parens:false});exprs.push(e);if(e.result===target&&ci===-1)ci=i}
   if(ci===-1){for(let t=0;t<50;t++){const e=genExpr({maxOps:1,not:false,parens:false});if(e.result===target){exprs[0]=e;ci=0;break}}if(ci===-1){ci=0}}
   const opts=exprs.map((e,i)=>({text:e.plain,correct:i===ci,cls:'btn-a-opt'}));opts.sort(()=>Math.random()-.5);
-  return{type:'pick',typeLabel:'🎯 Escolher',typeCls:'q-type-pick',prompt:`Qual resulta em <span class="e-v ${target?'e-true':'e-false'}" style="display:inline-flex;height:24px;font-size:.8rem">${target?'VERDADEIRO':'FALSO'}</span>?`,body:'',answers:opts,explain:{steps:exprs.map(e=>`${e.plain} = ${e.result?'V':'F'}`),plain:exprs[ci].plain},bubble:`Resposta: ${exprs[ci].plain}! 🎯`}
+  return{type:'pick',typeLabel:'🎯 Equivalência',typeCls:'q-type-pick',prompt:`Selecione a fórmula cuja avaliação produz <span class="e-v ${target?'e-true':'e-false'}" style="display:inline-flex;height:24px;font-size:.8rem">${target?'VERDADEIRO (V)':'FALSO (F)'}</span>:`,body:'',answers:opts,explain:{steps:exprs.map(e=>`${e.plain} = ${e.result?'V':'F'}`),plain:exprs[ci].plain},bubble:`Expressão logicamente compatível encontrada 🎯`}
 }
 
 function qGate(cfg){
   const type=cfg.not?pick(['and','or','not']):pick(['and','or']);
   const a=RB(),b=RB();
   const g=type==='and'?gateAND(a,b):type==='or'?gateOR(a,b):gateNOT(a);
-  return{type:'gate',typeLabel:'🔌 Porta Lógica',typeCls:'q-type-gate',prompt:`Qual é a saída desta porta ${type.toUpperCase()}?`,body:`<div class="gate-visual">${g.svg}</div>`,answers:[{text:'VERDADEIRO',correct:g.result===true,cls:'btn-a-true'},{text:'FALSO',correct:g.result===false,cls:'btn-a-false'}],explain:{steps:g.explain,plain:`Porta ${type.toUpperCase()}`},bubble:`Saída: ${g.result?'V':'F'}! 🔌`}
+  return{type:'gate',typeLabel:'🔌 Função Booleana',typeCls:'q-type-gate',prompt:`Determine o valor lógico de saída da função ${type.toUpperCase()} representada pela porta:`,body:`<div class="gate-visual">${g.svg}</div>`,answers:[{text:'VERDADEIRO (1)',correct:g.result===true,cls:'btn-a-true'},{text:'FALSO (0)',correct:g.result===false,cls:'btn-a-false'}],explain:{steps:[...g.explain,'Interpretação digital: V=1 e F=0.'],plain:`Porta ${type.toUpperCase()}`},bubble:`Saída booleana confirmada: ${g.result?'1':'0'} 🔌`}
 }
 
 function qDebug(cfg){
@@ -597,7 +884,7 @@ function qDebug(cfg){
   const correct=op==='and'?(a&&b):(a||b);
   const wrong=!correct;
   const wrongExpr=`<span class="e-v ${a?'e-true':'e-false'}">${a?'V':'F'}</span> <span class="e-op e-${op}">${op.toUpperCase()}</span> <span class="e-v ${b?'e-true':'e-false'}">${b?'V':'F'}</span> <span class="e-eq">=</span> <span class="e-v ${wrong?'e-true':'e-false'}">${wrong?'V':'F'}</span>`;
-  return{type:'debug',typeLabel:'🐛 Debug',typeCls:'q-type-debug',prompt:'Esta expressão está correta ou tem um BUG?',body:`<div class="expr-box">${wrongExpr}</div>`,answers:[{text:'✓ Correta',correct:false,cls:'btn-a-opt'},{text:'🐛 Tem Bug!',correct:true,cls:'btn-a-opt'}],explain:{steps:[`${a?'V':'F'} ${op.toUpperCase()} ${b?'V':'F'} = ${correct?'V':'F'} (não ${wrong?'V':'F'})`,`A expressão mostrava o resultado errado!`,op==='and'?'AND: ambos V → V, senão F':'OR: pelo menos um V → V, senão F'],plain:'Debug'},bubble:'Tinha um bug! Bom olho! 🐛'}
+  return{type:'debug',typeLabel:'🐛 Auditoria Lógica',typeCls:'q-type-debug',prompt:'Audite a avaliação abaixo: o resultado informado está logicamente consistente?',body:`<div class="expr-box">${wrongExpr}</div>`,answers:[{text:'✓ CONSISTENTE',correct:false,cls:'btn-a-opt'},{text:'🐛 INCONSISTENTE',correct:true,cls:'btn-a-opt'}],explain:{steps:[`Resultado correto: ${a?'V':'F'} ${op.toUpperCase()} ${b?'V':'F'} = ${correct?'V':'F'}`,`Resultado exibido: ${wrong?'V':'F'} (inconsistente)`,op==='and'?'Na conjunção, um F já torna a proposição F.':'Na disjunção, um V já torna a proposição V.'],plain:'Auditoria lógica'},bubble:'Inconsistência lógica detectada com sucesso 🐛'}
 }
 
 function qEquiv(cfg){
@@ -614,33 +901,61 @@ function qEquiv(cfg){
   const correct=pick(matching);const wrong=pick(notMatch);
   const opts=[{text:correct.text,correct:true,cls:'btn-a-opt'},{text:wrong.text,correct:false,cls:'btn-a-opt'}];
   opts.sort(()=>Math.random()-.5);
-  return{type:'equiv',typeLabel:'🔄 Equivalência',typeCls:'q-type-equiv',prompt:`Qual expressão <b>também</b> resulta em <span class="e-v ${target.r?'e-true':'e-false'}" style="display:inline-flex;height:24px;font-size:.8rem">${target.r?'V':'F'}</span>, assim como <b>${a?'V':'F'} ${target.op.toUpperCase()} ${b?'V':'F'}</b>?`,body:'',answers:opts,explain:{steps:exprs.map(e=>`${e.text} = ${e.r?'V':'F'}`),plain:'Equivalência'},bubble:`As expressões são equivalentes! 🔄`}
+  return{type:'equiv',typeLabel:'🔄 Equivalência',typeCls:'q-type-equiv',prompt:`Qual expressão é logicamente equivalente (mesmo valor-verdade) a <b>${a?'V':'F'} ${target.op.toUpperCase()} ${b?'V':'F'}</b> nesta interpretação?`,body:`<div class="expr-box"><span class="e-v ${target.r?'e-true':'e-false'}">${target.r?'V':'F'}</span> <span class="e-eq">↔</span> <span class="e-blank">?</span></div>`,answers:opts,explain:{steps:exprs.map(e=>`${e.text} = ${e.r?'V':'F'}`),plain:'Equivalência lógica'},bubble:`Equivalência lógica validada 🔄`}
 }
 
 /* ========== QUESTION DISPATCH ========== */
+const TYPE_TIPS={
+  eval:'Avalie a fórmula por precedência: parênteses, negação (NOT), conjunção/disjunção.',
+  complete:'Escolha o conectivo cuja tabela-verdade reproduz o resultado solicitado.',
+  table:'Em cada linha da tabela-verdade, A e B são fixos; avalie somente aquela linha.',
+  scenario:'Converta cada condição em proposições A e B (V/F) antes de aplicar o conectivo.',
+  pick:'Compare o valor-verdade de cada fórmula e selecione a semanticamente compatível.',
+  gate:'Portas lógicas implementam funções booleanas equivalentes a AND, OR e NOT.',
+  debug:'Recalcule formalmente o valor-verdade e confronte com o resultado exibido.',
+  equiv:'Equivalência lógica exige o mesmo valor-verdade sob a mesma interpretação.',
+};
+function pickQuestionType(types){
+  if(G.focusType&&types.includes(G.focusType)&&Math.random()<.58)return G.focusType;
+  const weakest=weakestTypeIn(types);
+  if(Math.random()<.55)return weakest;
+  const pool=types.filter(t=>t!==G.lastQType);
+  return pick(pool.length?pool:types);
+}
 function genQ(){
   const cfg=diff(G.level);G.timerMax=cfg.timer;
-  const type=pick(cfg.types);
-  switch(type){
-    case'eval':return qEval(cfg);case'complete':return qComplete(cfg);case'table':return qTable(cfg);
-    case'scenario':return qScenario(cfg);case'pick':return qPick(cfg);case'gate':return qGate(cfg);
-    case'debug':return qDebug(cfg);case'equiv':return qEquiv(cfg);default:return qEval(cfg);
+  const bankChance=G.focusType ? 0.58 : (G.level<=4 ? 0.48 : 0.34);
+  if(questionBankCache.length&&Math.random()<bankChance){
+    const bq=pickBankQuestion(cfg);
+    if(bq)return bq;
   }
+  const type=pickQuestionType(cfg.types);
+  let q;
+  switch(type){
+    case'eval':q=qEval(cfg);break;case'complete':q=qComplete(cfg);break;case'table':q=qTable(cfg);break;
+    case'scenario':q=qScenario(cfg);break;case'pick':q=qPick(cfg);break;case'gate':q=qGate(cfg);break;
+    case'debug':q=qDebug(cfg);break;case'equiv':q=qEquiv(cfg);break;default:q=qEval(cfg);break;
+  }
+  q.tip=q.tip||TYPE_TIPS[q.focusType||q.type]||'Pense por etapas para reduzir erros.';
+  return q;
 }
 
 function renderQ(q){
+  G.lastQType=q.focusType||q.type;
   $('qArea').innerHTML=`<div class="q-type ${q.typeCls}">${q.typeLabel}</div><div class="q-prompt">${q.prompt}</div>${q.body}`;
-  $('ansG').innerHTML=q.answers.map((a,i)=>`<button class="btn-a ${a.cls}" data-i="${i}" onclick="handleAns(${i})">${a.text}</button>`).join('');
+  $('ansG').innerHTML=q.answers.map((a,i)=>`<button class="btn-a ${a.cls}" data-i="${i}" onclick="handleAns(${i})">${esc(a.text)}</button>`).join('');
 }
 
 /* ========== ANSWER HANDLING ========== */
 function handleAns(idx){
   if(G.busy||!G.active)return;G.busy=true;stopTimer();
   const q=G.current;const btns=document.querySelectorAll('.btn-a');btns.forEach(b=>b.disabled=true);
+  const qType=q.focusType||q.type;
   let ok=false;
   if(idx===null){ok=false}else{ok=q.answers[idx].correct;btns.forEach((b,i)=>{if(q.answers[i].correct)b.classList.add('flash-ok');else if(i===idx)b.classList.add('flash-no')})}
 
   if(ok){
+    registerAnswerStats(true,qType);
     G.combo++;if(G.combo>G.maxCombo)G.maxCombo=G.combo;G.ok++;G.qInLv++;
     const base=10+G.level*5;const tB=Math.floor(G.timer*2);const mult=Math.max(1,G.combo);
     const bossMult=G.isBoss?2:1;const pts=(base+tB)*mult*bossMult;
@@ -653,13 +968,15 @@ function handleAns(idx){
     setTimeout(()=>{
       if(G.qInLv>=G.qPerLv){
         G.level++;G.qInLv=0;
-        if(G.level%5===0&&!G.isBoss){checkAch();if(G.achs.has('boss')){}else if(G.isBoss)G.achs.add('boss')}
+        G.lvNo=0;
         sfxLv();say(`🎉 Nível ${G.level}!`);
       }
       upHUD();setTimeout(()=>nextQ(),700);
     },1400);
   } else {
+    registerAnswerStats(false,qType);
     G.combo=0;G.no++;G.lives--;
+    G.lvNo++;
     sfxNo();flashBig(false);setChar('sad');setEyes('var(--danger)');setMouth(false);
     say(idx===null?'⏰ Tempo esgotado!':'Errado! Veja a explicação 💪');
     showExplain(false,q);
@@ -671,6 +988,7 @@ function showExplain(ok,q){
   const el=$('expl');el.className='explain show '+(ok?'explain-ok':'explain-no');
   let h=`<div class="explain-title">${ok?'✓ Correto!':'✗ Resposta incorreta'}</div>`;
   if(q.explain?.steps)q.explain.steps.forEach(s=>{h+=`<div class="explain-step"><span class="ea">→</span><b>${s}</b></div>`});
+  if(q.tip)h+=`<div class="explain-step"><span class="ea">💡</span>${q.tip}</div>`;
   el.innerHTML=h;
 }
 
@@ -680,10 +998,19 @@ function startGame(){
   const[n,c]=sel.value.split('|');G.name=n;G.cls=c;
   G.score=0;G.level=1;G.lives=3;G.combo=0;G.maxCombo=0;G.ok=0;G.no=0;G.qInLv=0;G.active=true;G.busy=false;G.isBoss=false;
   G.pu={time:1,life:0,fifty:1,skip:1};G.puEarned=0;G.achs=new Set();
+  G.recent=[];G.focusType='';G.lastQType=null;G.lastBankId=null;G.typeStats=freshTypeStats();G.lvNo=0;
   showScr('scrGame');setChar('idle');setEyes('var(--accent)');setMouth(true);
-  say(`Olá ${n.split(' ')[0]}! Vamos resolver lógica booleana! 🤖`);
+  say(`Olá ${n.split(' ')[0]}! Hoje vamos subir sua precisão em lógica booleana! 🤖`);
   $('expl').className='explain';$('bossBanner').classList.remove('show');
   renderPU();upHUD();setTimeout(()=>nextQ(),700);
+}
+
+function coachPrompt(){
+  const acc=Math.round(getRecentAcc()*100);
+  if(G.focusType&&QMETA[G.focusType])return`Foco atual: ${QMETA[G.focusType].label}. Vamos consolidar esse ponto! 🎯`;
+  if(acc>=85)return'Ótimo ritmo! Prepare-se para um desafio mais pesado. 🚀';
+  if(acc<=45)return'Respira e resolve passo a passo: precisão vem antes da velocidade. 🧠';
+  return pick(['Me ajude! 🤔','Qual a resposta? 💡','Pense bem... ⚡','Esse é bom! 🧠','Concentre-se! 🎯','Vamos lá! 🚀','Você consegue! 💪']);
 }
 
 function nextQ(){
@@ -691,7 +1018,7 @@ function nextQ(){
   // Boss round check
   G.isBoss=(G.level%5===0&&G.qInLv===0);
   if(G.isBoss){$('bossBanner').classList.add('show');sfxBoss();say('⭐ RODADA BOSS! Pontos dobrados! ⭐')}
-  else{$('bossBanner').classList.remove('show');say(pick(['Me ajude! 🤔','Qual a resposta? 💡','Pense bem... ⚡','Esse é bom! 🧠','Concentre-se! 🎯','Vamos lá! 🚀','Você consegue! 💪']))}
+  else{$('bossBanner').classList.remove('show');say(coachPrompt())}
   G.current=genQ();renderQ(G.current);renderPU();startTimer();
 }
 
@@ -704,24 +1031,69 @@ function gameOver(){
     // Badges
     let badges='';G.achs.forEach(k=>{const a=ACHS[k];if(a)badges+=`<div class="go-badge">${a.icon} ${a.t}</div>`});
     $('goBadges').innerHTML=badges;
+    renderGoReport();
     saveSc();
   },1100);
+}
+
+function buildGoReport(){
+  const total=G.ok+G.no;
+  const acc=total?Math.round((G.ok/total)*100):0;
+  const rows=Object.entries(G.typeStats).map(([k,v])=>({k,tries:v.ok+v.no,acc:(v.ok+v.no)?Math.round((v.ok/(v.ok+v.no))*100):0})).filter(r=>r.tries>0);
+  const sorted=[...rows].sort((a,b)=>b.acc-a.acc||b.tries-a.tries);
+  const strongest=sorted[0];
+  const weakest=[...rows].sort((a,b)=>a.acc-b.acc||b.tries-a.tries)[0];
+  let tip='Continue praticando para consolidar AND, OR e NOT.';
+  if(weakest&&QMETA[weakest.k])tip=`Recomendação: revise ${QMETA[weakest.k].label.toLowerCase()} (acerto ${weakest.acc}%).`;
+  else if(acc>=85)tip='Excelente domínio. Próximo passo: acelerar sem perder precisão.';
+  return{acc,strongest,weakest,tip};
+}
+function renderGoReport(){
+  const r=buildGoReport();
+  $('goRep').innerHTML=`<div class="go-report-title">Relatório Pedagógico da Partida</div>
+  <div class="go-report-grid">
+    <div class="go-report-item"><div class="go-report-l">Precisão Final</div><div class="go-report-v">${r.acc}%</div></div>
+    <div class="go-report-item"><div class="go-report-l">Melhor Área</div><div class="go-report-v">${r.strongest&&QMETA[r.strongest.k]?QMETA[r.strongest.k].label:'-'}</div></div>
+    <div class="go-report-item"><div class="go-report-l">Ponto de Atenção</div><div class="go-report-v">${r.weakest&&QMETA[r.weakest.k]?QMETA[r.weakest.k].label:'-'}</div></div>
+    <div class="go-report-item"><div class="go-report-l">Sequência Máxima</div><div class="go-report-v">x${G.maxCombo}</div></div>
+  </div>
+  <div class="go-report-tip">${r.tip}</div>`;
 }
 
 /* ========== PERSISTENCE ========== */
 function getLocal(){try{return JSON.parse(localStorage.getItem('ba_scores')||'[]')}catch{return[]}}
 function saveLocal(d){const s=getLocal();s.push(d);s.sort((a,b)=>b.score-a.score);localStorage.setItem('ba_scores',JSON.stringify(s.slice(0,80)))}
-async function saveSc(){const d={name:G.name,class:G.cls,score:G.score,level:G.level,correct:G.ok,wrong:G.no,maxCombo:G.maxCombo,timestamp:Date.now()};saveLocal(d);await saveCloud(d)}
+async function saveSc(){const d={name:G.name,class:G.cls,score:G.score,level:G.level,correct:G.ok,wrong:G.no,maxCombo:G.maxCombo,timestamp:Date.now()};saveLocal(d);await saveCloud(d);if($('inpS').value===`${d.name}|${d.class}`)loadStudentProfile(d.name,d.class)}
 
-let lbFilter='all';
-function setLBTab(f,btn){lbFilter=f;document.querySelectorAll('.lb-tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active');loadLB()}
+let lbClasses=[];
+function buildFilterClasses(scores=[]){
+  const set=new Set();
+  studentsCache.forEach(s=>set.add(s.class));
+  scores.forEach(r=>{const cls=String(r.class||'').trim();if(cls)set.add(cls)});
+  return[...set].sort(sortClasses);
+}
+function renderLBTabs(){
+  const tabs=['all',...lbClasses];
+  if(!tabs.includes(lbFilter))lbFilter='all';
+  const wrap=$('lbTabs');
+  wrap.innerHTML='';
+  tabs.forEach(f=>{
+    const b=document.createElement('button');
+    b.className='lb-tab'+(f===lbFilter?' active':'');
+    b.textContent=f==='all'?'Geral':shortClassLabel(f);
+    b.onclick=()=>setLBTab(f);
+    wrap.appendChild(b);
+  });
+}
+function setLBTab(f){lbFilter=f;renderLBTabs();loadLB()}
 async function loadLB(){
   const el=$('lbList');el.innerHTML='<div class="lb-empty">Carregando...</div>';
   let s=null;
-  const fMap={all:'all','6A':'6º Ano A','6B':'6º Ano B','6C':'6º Ano C','7A':'7º Ano A','7B':'7º Ano B','7C':'7º Ano C'};
-  const fv=fMap[lbFilter]||'all';
+  const fv=lbFilter||'all';
   s=await getCloud(fv);
-  if(!s){s=getLocal();if(fv!=='all')s=s.filter(r=>r.class&&r.class.includes(fv))}
+  if(!s){s=getLocal();if(fv!=='all')s=s.filter(r=>String(r.class||'').trim()===fv)}
+  lbClasses=buildFilterClasses(s||[]);
+  renderLBTabs();
   if(!s.length){el.innerHTML='<div class="lb-empty">Nenhuma pontuação ainda!</div>';return}
   s.sort((a,b)=>b.score-a.score);
   el.innerHTML=s.slice(0,20).map((r,i)=>{const m=i===0?'g':i===1?'s':i===2?'b':'';return`<div class="lb-r ${m}"><div class="lb-rk">${i+1}º</div><div class="lb-nm">${esc(r.name)}${r.class?`<span class="lb-cl">(${esc(r.class)})</span>`:''}</div><div class="lb-pt">${r.score}</div><div class="lb-lv">Lv${r.level||'?'}</div></div>`}).join('');
@@ -738,10 +1110,171 @@ document.addEventListener('keydown',e=>{
 document.addEventListener('keydown',e=>{if(e.key==='Enter'&&$('scrStart').classList.contains('on'))startGame()});
 
 /* ========== INIT ========== */
-const sv=localStorage.getItem('ba_student');
-if(sv){const sel=$('inpS');for(const o of sel.options)if(o.value===sv){sel.value=sv;break};updSel()}
-$('inpS').addEventListener('change',function(){localStorage.setItem('ba_student',this.value);updSel()});
-function updSel(){const s=$('inpS'),i=$('selI');if(!s.value){i.classList.remove('show');return}const[n,c]=s.value.split('|');$('selN').textContent=n;$('selC').textContent=c;i.classList.add('show')}
+function setSelState(kind,text){
+  const st=$('selState');
+  const map={loading:'loading',ok:'ok',warn:'warn',error:'error'};
+  st.className=`sel-state ${map[kind]||'loading'}`;
+  st.innerHTML=(kind==='loading'?'<span class="sel-spin"></span>':'')+`<span id="selStateTxt">${esc(text)}</span>`;
+}
+function setStartEnabled(on){
+  const btn=$('startBtn');
+  btn.disabled=!on;
+  btn.style.opacity=on?'1':'.45';
+  btn.style.cursor=on?'pointer':'default';
+}
+function saveStudentsCache(list){
+  try{localStorage.setItem(STUDENTS_CACHE_KEY,JSON.stringify(list))}catch(e){console.warn('Falha ao salvar cache de alunos',e)}
+}
+function readStudentsCache(){
+  try{
+    const raw=JSON.parse(localStorage.getItem(STUDENTS_CACHE_KEY)||'[]');
+    if(!Array.isArray(raw))return[];
+    return raw.filter(s=>s&&s.name&&s.class).map(s=>({name:String(s.name).trim(),class:String(s.class).trim()}));
+  }catch{return[]}
+}
+function uniqStudents(list){
+  const seen=new Set();
+  const out=[];
+  list.forEach(s=>{
+    const key=`${s.name}|${s.class}`.toLowerCase();
+    if(!seen.has(key)){seen.add(key);out.push(s);}
+  });
+  return out;
+}
+function sortStudents(list){
+  return [...list].sort((a,b)=>sortClasses(a.class,b.class)||a.name.localeCompare(b.name,'pt-BR'));
+}
+function renderStudents(list){
+  const sel=$('inpS');
+  const prev=localStorage.getItem('ba_student')||sel.value;
+  sel.innerHTML='';
+  const placeholder=document.createElement('option');
+  placeholder.value='';placeholder.disabled=true;placeholder.selected=true;placeholder.textContent='Escolha seu nome...';
+  sel.appendChild(placeholder);
+
+  const byClass={};
+  list.forEach(s=>{if(!byClass[s.class])byClass[s.class]=[];byClass[s.class].push(s)});
+  Object.keys(byClass).sort(sortClasses).forEach(cls=>{
+    const og=document.createElement('optgroup');
+    og.label=`📘 ${cls.toUpperCase()}`;
+    byClass[cls].sort((a,b)=>a.name.localeCompare(b.name,'pt-BR')).forEach(s=>{
+      const op=document.createElement('option');
+      op.value=`${s.name}|${s.class}`;
+      op.textContent=s.name;
+      og.appendChild(op);
+    });
+    sel.appendChild(og);
+  });
+
+  sel.disabled=!list.length;
+  if(prev&&[...sel.options].some(o=>o.value===prev))sel.value=prev;
+  lbClasses=buildFilterClasses([]);
+  renderLBTabs();
+  updSel();
+}
+async function loadStudents(){
+  $('reloadStudentsBtn').disabled=true;
+  setStartEnabled(false);
+  setSelState('loading','Buscando alunos no Supabase...');
+  const sel=$('inpS');
+  sel.disabled=true;
+
+  let cloudRows=[];
+  let cloudErr=null;
+  const cloud=await fetchStudentsCloudRaw();
+  if(cloud.error)cloudErr=cloud.error;
+  if(Array.isArray(cloud.rows))cloudRows=cloud.rows.map(normalizeStudentRow).filter(Boolean);
+  cloudRows=sortStudents(uniqStudents(cloudRows));
+
+  if(cloudRows.length){
+    studentsCache=cloudRows;
+    saveStudentsCache(studentsCache);
+    setSelState('ok',`${studentsCache.length} alunos carregados de "${activeStudentsTable}".`);
+  }else{
+    const cached=sortStudents(uniqStudents(readStudentsCache()));
+    studentsCache=cached;
+    if(cached.length){
+      setSelState('warn','Banco indisponível no momento. Usando lista local salva.');
+    }else{
+      setSelState('error','Não foi possível carregar os alunos do banco.');
+      if(cloudErr)console.warn('Erro ao carregar alunos:',cloudErr);
+    }
+  }
+  renderStudents(studentsCache);
+  if(!supa)$('offN').classList.add('show');
+  $('reloadStudentsBtn').disabled=false;
+}
+function setProfileLoading(){
+  $('studentProfile').classList.add('show');
+  $('pfBestScore').textContent='...';
+  $('pfBestLevel').textContent='...';
+  $('pfGames').textContent='...';
+  $('pfAcc').textContent='...';
+}
+function renderStudentProfile(rows){
+  const games=rows.length;
+  if(!games){
+    $('pfBestScore').textContent='0';
+    $('pfBestLevel').textContent='1';
+    $('pfGames').textContent='0';
+    $('pfAcc').textContent='0%';
+    return;
+  }
+  const bestScore=Math.max(...rows.map(r=>Number(r.score)||0));
+  const bestLevel=Math.max(...rows.map(r=>Number(r.level)||1));
+  const accRows=rows.filter(r=>Number.isFinite(Number(r.correct))&&Number.isFinite(Number(r.wrong)));
+  let avgAcc='-';
+  if(accRows.length){
+    const avg=accRows.reduce((acc,r)=>{const c=Number(r.correct)||0;const w=Number(r.wrong)||0;const t=c+w;return acc+(t?c/t:0)},0)/accRows.length;
+    avgAcc=`${Math.round(avg*100)}%`;
+  }
+  $('pfBestScore').textContent=String(bestScore);
+  $('pfBestLevel').textContent=`${bestLevel}`;
+  $('pfGames').textContent=`${games}`;
+  $('pfAcc').textContent=avgAcc;
+}
+async function loadStudentProfile(name,cls){
+  const token=++profileReqToken;
+  setProfileLoading();
+  let rows=[];
+  if(supa){
+    try{
+      const {data,error}=await supa.from(SCORES_TABLE).select('*').eq('name',name).eq('class',cls).order('score',{ascending:false}).limit(80);
+      if(!error&&Array.isArray(data))rows=data;
+    }catch(e){console.warn('Perfil do aluno (cloud) falhou',e)}
+  }
+  if(!rows.length){
+    rows=getLocal().filter(r=>r.name===name&&r.class===cls);
+  }
+  if(token!==profileReqToken)return;
+  renderStudentProfile(rows);
+}
+function updSel(){
+  const s=$('inpS'),i=$('selI');
+  if(!s.value){
+    i.classList.remove('show');
+    $('studentProfile').classList.remove('show');
+    setStartEnabled(false);
+    return;
+  }
+  const[n,c]=s.value.split('|');
+  $('selN').textContent=n;$('selC').textContent=c;i.classList.add('show');
+  setStartEnabled(true);
+  localStorage.setItem('ba_student',s.value);
+  loadStudentProfile(n,c);
+}
+
+$('inpS').addEventListener('change',updSel);
+$('reloadStudentsBtn').addEventListener('click',()=>loadStudents());
+
+const cachedStartup=readStudentsCache();
+if(cachedStartup.length){
+  studentsCache=sortStudents(uniqStudents(cachedStartup));
+  renderStudents(studentsCache);
+  setSelState('warn','Atualizando lista de alunos...');
+}
+loadQuestionBank();
+loadStudents();
 </script>
 </body>
 </html>
